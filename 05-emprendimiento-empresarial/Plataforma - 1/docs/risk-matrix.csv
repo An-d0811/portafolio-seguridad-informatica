@@ -1,0 +1,6 @@
+impact,likelihood,criticality,example_control,priority
+5,5,5,MFA obligatorio y segmentacion de red,critical
+4,5,4,Monitoreo SIEM y respuesta a incidentes,high
+3,3,3,Backups verificados y gestion de parches,medium
+2,2,2,Inventario actualizado y capacitacion,low
+1,1,1,Revision anual de controles,low

@@ -1,0 +1,78 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: risk_platform
+      POSTGRES_USER: risk_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-risk_password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U risk_user -d risk_platform"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build: ./backend
+    command: sh -c "python -m app.seed && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    expose:
+      - "8000"
+    environment:
+      DATABASE_URL: postgresql+psycopg://risk_user:${POSTGRES_PASSWORD:-risk_password}@postgres:5432/risk_platform
+      JWT_SECRET: ${JWT_SECRET:-change-me-super-secret}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o}
+      NVIDIA_API_KEY: ${NVIDIA_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      AI_MAX_TOKENS: ${AI_MAX_TOKENS:-2048}
+      AI_REASONING_ENABLED: ${AI_REASONING_ENABLED:-false}
+      AI_REASONING_EFFORT: ${AI_REASONING_EFFORT:-high}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-no-reply@guardia.gt}
+      WEBHOOK_URL: ${WEBHOOK_URL:-}
+      REEVALUATION_DAYS: ${REEVALUATION_DAYS:-90}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173,https://localhost:8443,https://riesgo-ia.gt.local:8443}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8443:443"
+    volumes:
+      - ./infra/certs:/etc/nginx/certs:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db-backup:
+    image: postgres:16-alpine
+    volumes:
+      - postgres_backups:/backups
+      - ./scripts/backup.sh:/backup.sh:ro
+    environment:
+      PGPASSWORD: ${POSTGRES_PASSWORD:-risk_password}
+    command: sh -c "sh /backup.sh"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  postgres_backups:

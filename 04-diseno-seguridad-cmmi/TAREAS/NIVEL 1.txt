@@ -1,0 +1,142 @@
+===============================
+DISTRIBUCIÓN NIVEL 1 - CMMI
+EMPRESA DE LOGÍSTICA
+====================
+
+Carlos (4 áreas)
+
+* Technical Solution
+* Product Integration
+* Verification and Validation
+* Peer Review
+
+Danny (4 áreas)
+
+* Process Management
+* Process Asset Development
+* Organizational Training
+* Governance
+
+Diancarlo (3 áreas)
+
+* Risk and Opportunity Management
+* Decision Analysis and Resolution
+* Causal Analysis and Resolution
+
+Gerber (4 áreas)
+
+* Planning
+* Monitoring and Control
+* Estimating
+* Requirements Development and Management
+
+Keneth (4 áreas)
+
+* Configuration Management
+* Process Quality Assurance
+* Supplier Agreement Management
+* Implementation Infrastructure
+
+===============================
+FORMATO NIVEL 1 (LOGÍSTICA)
+===========================
+
+Área: (Nombre del área)
+
+Descripción actual:
+
+* Los procesos logísticos (envíos, rutas, entregas) se realizan de forma manual o semi-estructurada.
+* No existe documentación formal de procedimientos.
+* La operación depende de la experiencia del personal.
+
+Problemas detectados:
+
+* Falta de control en entregas y rutas
+* Errores en la planificación de envíos
+* Procesos no estandarizados
+* Dependencia del conocimiento individual
+
+Impacto:
+
+* Retrasos en entregas
+* Pérdida o mala gestión de paquetes
+* Baja eficiencia operativa
+* Insatisfacción del cliente
+
+===============================
+EJEMPLOS POR ÁREA (LOGÍSTICA)
+=============================
+
+Área: Planning
+Descripción actual:
+
+* La planificación de rutas y entregas se realiza manualmente.
+* No se utilizan herramientas formales de optimización.
+
+Problemas detectados:
+
+* Rutas ineficientes
+* Retrasos en entregas
+
+Impacto:
+
+* Incremento de costos operativos
+* Baja productividad
+
+Área: Monitoring and Control
+Descripción actual:
+
+* No existe monitoreo en tiempo real de entregas.
+* El seguimiento se realiza por llamadas o mensajes.
+
+Problemas detectados:
+
+* Falta de visibilidad
+* Dificultad para detectar retrasos
+
+Impacto:
+
+* Mala atención al cliente
+* Pérdida de control operativo
+
+Área: Configuration Management
+Descripción actual:
+
+* No hay control formal sobre cambios en sistemas o procesos logísticos.
+* La información se maneja en archivos dispersos.
+
+Problemas detectados:
+
+* Información inconsistente
+* Errores en registros
+
+Impacto:
+
+* Confusión operativa
+* Toma de decisiones incorrecta
+
+Área: Risk and Opportunity Management
+Descripción actual:
+
+* No se identifican riesgos como retrasos, pérdidas o fallas en transporte.
+* No existe un plan de contingencia.
+
+Problemas detectados:
+
+* Reacción tardía ante problemas
+* Falta de prevención
+
+Impacto:
+
+* Pérdidas económicas
+* Afectación al cliente
+
+===============================
+NOTAS IMPORTANTES
+=================
+
+* Nivel 1 = diagnóstico (AS-IS)
+* NO incluir soluciones
+* NO incluir mejoras
+* NO incluir KPIs
+* Enfocarse en cómo opera actualmente la logística

@@ -1,0 +1,5 @@
+name,asset_type,owner,criticality,location,description
+Servidor de base de datos,hardware,Area de TI,5,Centro de datos,Base de datos principal de la institucion
+Portal ciudadano,software,Area de Sistemas,4,Produccion,Portal web de servicios ciudadanos
+Expedientes digitales,data,Archivo Central,5,Produccion,Informacion personal de ciudadanos
+,person,Recursos Humanos,3,,Personal tecnico de soporte
